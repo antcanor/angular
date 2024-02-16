@@ -1,0 +1,15 @@
+<h3>Carrito</h3>
+
+<div class="row row-cols-md-1">
+    @for (a of getcarrito(); track a.id) {
+    <app-articulo-carrito [art]="a"></app-articulo-carrito>
+   } 
+    <div class="row row-cols-md-5 cartPrice">
+        <div></div>
+        <div></div>
+        <div>Total:</div>
+        <div>{{getcarritotal() | currency:" "}}</div>
+        <div></div>
+    </div>
+</div>
+

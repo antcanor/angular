@@ -1,0 +1,17 @@
+<div class="row row-cols-md-5">
+    <div>
+        <img class="img-thumbnail float-start" src="{{art.imagen}}">
+        {{art.nombre}}
+    </div>
+    <div>{{art.precio | currency:" "}} €</div>
+    <div>
+      <button (click)="decreUnits()" [disabled]="art.unidades <= 1" class="btn btn-primary">-</button>
+      <input type="text" [value]="art.unidades">
+      <button (click)="incrUnid()" class="btn btn-primary">+</button>
+
+    </div>
+    <div>{{art.precio * art.unidades | currency:" "}} €</div>
+    <div>
+      <button (click) = "borrarArticulo()"class="btn btn-primary">Borrar</button>
+    </div>
+</div>

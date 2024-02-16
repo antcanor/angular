@@ -1,0 +1,16 @@
+<div class="card text-center bg-light mb-2 mr-2">
+    <a>
+        <img src="{{articulo.imagen}}" class="card-img-top">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">NOMBRE</h5>
+        <p>{{articulo.nombre}}</p>
+        <p class="card-text">PRECIO</p>
+        <p>{{articulo.precio | currency:" " }} €</p>
+        @if(articulo.stock==true){
+        <button (click)="addtocart()" class="btn btn-primary">Añadir al carrito</button>
+        }@else{
+        <button class="btn btn-danger" disabled>Sin stock</button>
+        }
+    </div>
+</div>

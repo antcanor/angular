@@ -1,0 +1,58 @@
+<h3>Buscar</h3>
+
+<div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="categoriesNav">
+            <ul class="navbar-nav">
+                    @for (p of getProcesadores(); track p.id) {
+                        <li class="nav-item">
+                        <a (click)="cat=p.id" class="nav-link">{{p.nombre}}</a>
+                    </li>
+                    }
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="manufacturersNav">
+            <ul class="navbar-nav">
+                @for (f of getFabricantes(); track f.id) {
+                    <li class="nav-item">
+                    <a (click)="fab=f.id" class="nav-link">{{f.nombre}}</a>
+                </li>
+                }
+
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="input-group mb-3">
+        <input #pattern (keyup)="patron=pattern.value" type="text" class="form-control" placeholder="Buscar por nombre"
+                aria-label="Buscar por nombre" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+                Buscar
+            </button>
+            <button (click)="borrarfiltros()" class="btn btn-danger" type="button">
+                borrar filtro
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-container>
+    <div class="row">
+        <h5>Resultados de búsqueda</h5>
+    </div>
+    <div class="row">
+        <div class="row row-cols-md-5">
+           @for (art of getArticulos() | filtroPatron:patron |filtrofab:fab | filtrocat:cat; track art.id){
+            <app-articulo [articulo]="art"></app-articulo>
+           }
+        </div>
+    </div>
+</ng-container>
