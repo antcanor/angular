@@ -1,0 +1,71 @@
+<h2>Portfolio</h2>
+
+<figure>
+  <blockquote class="blockquote">
+    <h3></h3>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Total balance
+  </figcaption>
+</figure>
+
+<div class="row">
+  <table class="table table-sm table-striped align-middle">
+    <thead>
+      <tr>
+        <th scope="col" width="5%" class="text-end"></th>
+        <th scope="col" width="20%">Asset</th>
+        <th scope="col" width="15%" class="text-end">Balance</th>
+        <th scope="col" width="15%" class="text-end">Price</th>
+        <th scope="col" width="15%" class="text-end">Quantity</th>
+        <th scope="col" width="15%" class="text-end">Conversions</th>
+        <th scope="col" width="15%" class="text-end">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (a of getWallet(); track a.id) {
+        <tr>
+          
+        <td scope="col" class="text-end">
+          <!-- AQUÍ EL LOGO -->
+                <img src="{{a.img}}" width="50px" height="50px">
+              </td>
+              <td scope="col">
+                {{a.name}} ({{a.symbol}}) 
+              </td>
+              <td scope="col" class="text-end">
+                {{a.price * a.unidades | currency}}
+              </td>
+              <td scope="col" class="text-end">
+                {{a.price| currency}}
+              </td>
+              <td scope="col" class="text-end">
+                <app-asset-quantity [asset]="a"></app-asset-quantity>
+              </td>
+              <td scope="col" class="text-end">
+                {{a.price * a.unidades / 1.07 | currency:"EUR":"symbol"}}
+              </td>
+              <td scope="col" class="text-end">
+                <app-assets-actions [asset]="a"></app-assets-actions>
+              </td>
+            </tr>
+        }
+        
+    </tbody>
+    <tfoot>
+      <tr>
+        <td scope="col" width="5%" class="text-end"></td>
+        <td scope="col" ></td>
+        <td td scope="col" class="text-end">{{getTotal() | currency}}</td>
+        <td scope="col" class="text-end"></td>
+        <td scope="col" class="text-end"></td>
+        <td scope="col" class="text-end">{{getTotal() / 1.07 | currency:"EUR":"symbol"}}</td>
+        <td scope="col" class="text-end"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="row">
+  <button class="btn btn-primary btn-lg">REFRESH</button>
+</div>

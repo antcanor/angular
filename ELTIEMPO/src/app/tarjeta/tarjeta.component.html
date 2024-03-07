@@ -1,0 +1,13 @@
+<div class="card text-center bg-light mb-2 mr-2">
+    <div class="card-body">
+      <h5 class="card-title">{{ciudades.name}}</h5>
+      <p class="card-text">  {{ciudades.sys.country}}  </p>
+      <p class="card-text">  {{ciudades.main.temp | celsius}}ºC</p>
+      <p>
+        <app-icono-casa [ciudad]="ciudades"></app-icono-casa>
+        <app-icono-fav [ciudad]="ciudades"></app-icono-fav>
+        
+      </p>
+    </div>
+  </div>
+
